@@ -1,15 +1,14 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext } from 'react';
 
 import { MovieContext } from '../context';
 import { Button, Container, Detail, Title } from './style';
 
 
-const Movie = () => {
-    const [movie, setMovie] = useContext(MovieContext);
+const Movie = ({ dispatch }) => {
+    const [movie] = useContext(MovieContext);
 
-    const onDelete = (e) => {
-        var newMovie = movie.filter(data => data.id !== e);
-        setMovie(newMovie)
+    const onDelete = (id) => {
+        dispatch({ type: 'delete', payload: id })
     }
 
     return (
