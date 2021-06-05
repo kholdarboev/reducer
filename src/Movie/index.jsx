@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 
 import { MovieContext } from '../context';
-import { Button, Container, Detail, Title } from './style';
+import { Button, Container, Title } from './style';
 
 
 const Movie = ({ dispatch }) => {
     const [movie] = useContext(MovieContext);
 
-    const onDelete = (id) => {
-        dispatch({ type: 'delete', payload: id })
+    const onDelete = (e) => {
+        dispatch({ type: 'delete', payload: e })
     }
 
     return (
@@ -17,7 +17,6 @@ const Movie = ({ dispatch }) => {
                 return (
                     <Container key={value.id}>
                         <Title>  {value.name}</Title>
-                        <Detail>  {value.year}</Detail>
                         <Button onClick={() => onDelete(value.id)}>Delete</Button>
                     </Container>
                 )
